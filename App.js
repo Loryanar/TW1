@@ -1,5 +1,6 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import {Text,View,StyleSheet} from 'react-native'; 
+import {Text,Button,StyleSheet} from 'react-native'; 
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack"; 
@@ -7,12 +8,20 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Register from './views/register';
 import Login from './views/login';
 import Post from './views/posts';
+import Mypost from './views/Mypost'
+import perfilUpdate from './views/perfilUpdate'
+import Perfil from './views/perfil'
 
 const Stack = createStackNavigator();
 
 function MyStack() { 
+  
   return(
-    <Stack.Navigator  screenOptions={{
+
+    <Stack.Navigator  
+    
+    initialRouteName="Login"
+    screenOptions={{
       headerStyle: {
         backgroundColor: "#621FF7",
       },
@@ -21,14 +30,26 @@ function MyStack() {
         fontWeight: "bold",
       },
     }}>
-      <Stack.Screen name="Post"
+      
+       <Stack.Screen name="Post"
         component={Post}
         options={{ title: "Post" }}
-        /> 
+        />
       <Stack.Screen name="Login"
         component={Login}
         options={{ title: "Login" }}
-        /> 
+        />  
+         <Stack.Screen name="Perfil"
+        component={Perfil}
+        options={{ title: "Perfil" }}
+      />
+        <Stack.Screen name="Mypost"
+        component={Mypost}
+        />
+          <Stack.Screen name="Update"
+        component={perfilUpdate}
+        options={{ title: "Update" }}
+      />
         <Stack.Screen name="Register"
         component={Register}
         options={{ title: "Register" }}
@@ -44,10 +65,9 @@ const App =() =>{
   </NavigationContainer>
   );
 
-
 }; 
 const styles= StyleSheet.create ({
   container: {flex:1, justifyContent:"center", alignContent:"center", backgroundColor:"#292929" ,},
   tittle: {fontSize: 30}
 })
- export default App;
+export default App;
